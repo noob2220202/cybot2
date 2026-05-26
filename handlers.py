@@ -34,12 +34,12 @@ async def cmd_auto_delete(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if hours:
             await update.message.reply_text(
                 f"현재 {topic_label}의 자동삭제 설정: {hours}시간\n"
-                f"해제하려면 /자동삭제 0"
+                f"해제하려면 /autodelete 0"
             )
         else:
             await update.message.reply_text(
                 f"현재 {topic_label}에 자동삭제가 설정되어 있지 않습니다.\n"
-                f"설정하려면 /자동삭제 [시간] (예: /자동삭제 48)"
+                f"설정하려면 /autodelete [시간] (예: /autodelete 48)"
             )
         return
 
@@ -52,7 +52,7 @@ async def cmd_auto_delete(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if hours < 0:
             raise ValueError
     except ValueError:
-        await update.message.reply_text("올바른 숫자를 입력하세요. 예: /자동삭제 48")
+        await update.message.reply_text("올바른 숫자를 입력하세요. 예: /autodelete 48")
         return
 
     topic_label = f"토픽 {thread_id}" if thread_id else "일반 채팅"

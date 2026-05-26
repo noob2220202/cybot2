@@ -46,8 +46,8 @@ def main():
         .build()
     )
 
-    app.add_handler(CommandHandler("자동삭제", cmd_auto_delete))
-    app.add_handler(CommandHandler("전체삭제", cmd_delete_all))
+    app.add_handler(CommandHandler("autodelete", cmd_auto_delete))
+    app.add_handler(CommandHandler("deleteall", cmd_delete_all))
     app.add_handler(
         MessageHandler(filters.ALL & ~filters.COMMAND, handle_message)
     )
